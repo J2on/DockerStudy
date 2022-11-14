@@ -1,0 +1,19 @@
+version: "2"
+services:
+  nginx:
+    container_name: j2on_nginx
+    image: j2on/ubuntu-nginx
+    networks:
+    - backbone
+  speedtest:
+    container_name: j2on_speedtest
+    image: j2on/adolfintelspeedtest
+    environment:
+    - MODE=standalone
+    networks:
+    - backbone
+    ports:
+    - 80:80
+networks:
+  backbone:
+    driver: bridge
